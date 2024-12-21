@@ -45,7 +45,15 @@ export function ChatForm() {
       />
       <Input
         type="text"
-        placeholder="Roll Number"
+        placeholder="PIAIC Roll Number"
+        value={rollNumber}
+        onChange={(e) => setRollNumber(e.target.value)}
+        required
+        className="bg-white"
+      />
+      <Input
+        type="text"
+        placeholder="Your GitHub Link"
         value={rollNumber}
         onChange={(e) => setRollNumber(e.target.value)}
         required
