@@ -11,6 +11,7 @@ import { Loader2 } from 'lucide-react';
 export function ChatForm() {
   const [name, setName] = useState("");
   const [rollNumber, setRollNumber] = useState("");
+  const [githubLink, setGithubLink] = useState("");
   const [quarter, setQuarter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -23,6 +24,7 @@ export function ChatForm() {
         metadata: {
           name,
           roll_number: rollNumber,
+          github_link: githubLink,
           quarter,
         },
       });
@@ -52,10 +54,10 @@ export function ChatForm() {
         className="bg-white"
       />
       <Input
-        type="text"
+        type="url"
         placeholder="Your GitHub Link"
-        value={rollNumber}
-        onChange={(e) => setRollNumber(e.target.value)}
+        value={githubLink}
+        onChange={(e) => setGithubLink(e.target.value)}
         required
         className="bg-white"
       />

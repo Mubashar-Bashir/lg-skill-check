@@ -1,24 +1,21 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { SuggestionConfig, Thread } from "@assistant-ui/react";
 import { useLangGraphRuntime } from "@assistant-ui/react-langgraph";
 import { makeMarkdownText } from "@assistant-ui/react-markdown";
 import { getThreadState, sendMessage } from "@/lib/chatApi";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Send, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { LangGraphSkillLevelTool } from "@/components/lang-graph-skill-level-tool";
+import { ToolFallback } from "@/components/tools/ToolFallback";
 
 const MarkdownText = makeMarkdownText();
 
 interface MyAssistantProps {
   threadId: string;
 }
-export type ThreadWelcomeConfig = {
-  message?: string | null | undefined;
-  suggestions?: SuggestionConfig[] | undefined;
-};
 
 export function MyAssistant({ threadId }: MyAssistantProps) {
   const threadIdRef = useRef<string>(threadId);
@@ -56,20 +53,21 @@ export function MyAssistant({ threadId }: MyAssistantProps) {
       <main className="flex-grow overflow-hidden flex flex-col">
         <div className="flex-grow overflow-y-auto p-4">
           <Thread
+            tools={[LangGraphSkillLevelTool]}
             userMessage={{ allowEdit: false }}
             assistantAvatar={{
               src: "https://panaverse-dao-five.vercel.app/_next/image?url=%2Fpanaverse-logo.png&w=128&q=75",
             }}
             runtime={runtime}
             welcome={{
-              message: "What is your current langGraph level?",
+              message: "What is your current LangGraph level?",
               suggestions: [
                 { prompt: "I am on red level", text: "RED LEVEL" },
                 { prompt: "I am on yellow level", text: "YELLOW LEVEL" },
                 { prompt: "I am on green level", text: "GREEN LEVEL" },
               ],
             }}
-            assistantMessage={{ components: { Text: MarkdownText } }}
+            assistantMessage={{ components: { Text: MarkdownText, ToolFallback } }}
           />
         </div>
       </main>

@@ -10,7 +10,7 @@ const createClient = () => {
   });
 };
 
-export const createThread = async (p0: { metadata: { name: string; roll_number: string; quarter: string; }; }) => {
+export const createThread = async (p0: { metadata: { name: string; roll_number: string; github_link: string, quarter: string; }; }) => {
   const client = createClient();
   return client.threads.create(p0);
 };
