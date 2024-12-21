@@ -1,12 +1,13 @@
 import { MyAssistant } from "@/components/MyAssistant";
 import { Suspense } from "react";
 
-export default function ChatPage({ params }: { params: { threadId: string } }) {
+export default async function ChatPage(props: { params: Promise<{ threadId: string }> }) {
+  const params = await props.params;
   const { threadId } = params;
   if (!threadId) {
     return null;
   }
-  
+
   return (
     <main className="h-screen overflow-hidden">
       <Suspense>
