@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+const {
+	default: flattenColorPalette,
+  } = require("tailwindcss/lib/util/flattenColorPalette");
+  
 const config = {
   darkMode: ["class"],
   content: [
@@ -12,6 +16,7 @@ const config = {
     require("tailwindcss-animate"),
     require("@assistant-ui/react/tailwindcss"),
     require("@assistant-ui/react-markdown/tailwindcss"),
+	addVariablesForColors
   ],
     theme: {
     	extend: {
@@ -61,9 +66,35 @@ const config = {
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
     			}
-    		}
+    		},
+			animation: {
+				spotlight: "spotlight 2s ease .75s 1 forwards",
+			  },
+			  keyframes: {
+				spotlight: {
+				  "0%": {
+					opacity: '0',
+					transform: "translate(-72%, -62%) scale(0.5)",
+				  },
+				  "100%": {
+					opacity: '1',
+					transform: "translate(-50%,-40%) scale(1)",
+				  },
+				},
+			  },
     	}
     }
 } satisfies Config;
 
 export default config;
+
+function addVariablesForColors({ addBase, theme }: any) {
+	let allColors = flattenColorPalette(theme("colors"));
+	let newVars = Object.fromEntries(
+	  Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+	);
+   
+	addBase({
+	  ":root": newVars,
+	});
+  }

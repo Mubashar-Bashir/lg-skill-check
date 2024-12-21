@@ -1,71 +1,88 @@
 import { ChatForm } from "@/components/ChatForm";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Code, Users } from 'lucide-react';
-import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Linkedin } from 'lucide-react';
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Spotlight } from "@/components/ui/spotlight";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'LangGraph Proficiency Check | Panaversity',
+  description: 'Assess your LangGraph skills with our AI-powered proficiency check. Get personalized insights and improve your expertise.',
+};
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100">
-      <div className="container mx-auto px-4 py-8 md:py-16">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">LangGraph Level Check</h1>
-          <p className="text-xl text-blue-700 max-w-2xl mx-auto">
-            Assess your LangGraph knowledge and get personalized learning recommendations
-          </p>
-        </header>
+    <main className="min-h-screen w-full flex flex-col bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="white"
+      />
+      <BackgroundBeams />
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-blue-800">Start Your Assessment</CardTitle>
-              <CardDescription>
-                Enter your details to begin the LangGraph level check
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChatForm />
-            </CardContent>
-          </Card>
+      <div className="p-4 max-w-4xl mx-auto relative z-10 w-full py-20 md:py-28">
+        <h1 className="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 mb-8">
+          LangGraph Proficiency <br /> Check
+        </h1>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-blue-800">Why Take the Level Check?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-4">
-                {[
-                  { icon: BookOpen, text: "Assess your current LangGraph knowledge" },
-                  { icon: Code, text: "Get personalized learning paths" },
-                  { icon: Users, text: "Compare your skills with peers" },
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center space-x-3">
-                    <item.icon className="h-6 w-6 text-blue-500" />
-                    <span>{item.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="w-full max-w-md mx-auto bg-white/5 backdrop-blur-md border-white/10">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold text-white">
+              Start AI Analysis
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <ChatForm />
+          </CardContent>
+        </Card>
 
-        <section className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">Ready to elevate your LangGraph skills?</h2>
-          <p className="text-xl text-blue-700 mb-6">
-            Join thousands of students mastering LangGraph and building the future of AI
-          </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6">
-            <Link href="#start-assessment">
-              Start Assessment <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+        <section className="mt-16 text-center">
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Optimize Your LangGraph Expertise
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "Quantify Skills", description: "Precise evaluation of your LangGraph proficiency." },
+              { title: "Adaptive Learning", description: "AI-driven recommendations for skill enhancement." },
+              { title: "Peer Benchmarking", description: "Compare your expertise with the LangGraph community." },
+            ].map((item, index) => (
+              <Card key={index} className="bg-white/5 border-white/10">
+                <CardContent className="pt-6">
+                  <h3 className="text-lg font-medium text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-neutral-300">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </section>
-
-        <footer className="text-center text-blue-600">
-          <p>&copy; {new Date().getFullYear()} LangGraph Level Check. All rights reserved.</p>
-        </footer>
       </div>
+
+      <footer className="w-full text-center text-neutral-400 py-6 flex flex-col items-center mt-auto">
+        <p className="mb-4">
+          &copy; {new Date().getFullYear()} LangGraph Proficiency Analysis. All rights reserved by Panaversity.
+        </p>
+        <p className="mb-0.5 text-xs font-medium">Builders:</p>
+        <div className="flex flex-wrap justify-center gap-4 mb-4 relative z-10">
+          {[
+            { name: "Saqib Imran", url: "https://www.linkedin.com/in/saqib-imran-537759230/" },
+            { name: "Zeeshan Aziz", url: "https://www.linkedin.com/in/zeeshanazizz/" },
+            { name: "Muhammad Junaid", url: "https://www.linkedin.com/in/mrjunaid/" },
+          ].map((profile, index) => (
+            <a key={index} href={profile.url} target="_blank" rel="noopener noreferrer" 
+               className="flex items-center text-sm hover:text-blue-400 transition-colors">
+              <Linkedin className="w-4 h-4 mr-1" aria-hidden="true" />
+              <span className="text-xs">{profile.name}</span>
+            </a>
+          ))}
+        </div>
+        <p className="text-xs text-neutral-500 max-w-md text-center">
+          Note: This is a pilot test and should not be used for production evaluations. Results may not reflect actual proficiency levels.
+        </p>
+      </footer>
     </main>
   );
 }
-

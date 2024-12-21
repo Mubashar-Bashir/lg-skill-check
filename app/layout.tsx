@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "PIAIC LG Skills Check",
+  title: "LangGraph Proficiency Check | Panaversity",
   description: "Let Agent Evaluate Your Agentic AI Skills",
 };
 
@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         {children}
       </body>

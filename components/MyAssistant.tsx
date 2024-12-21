@@ -46,7 +46,7 @@ export function MyAssistant({ threadId }: MyAssistantProps) {
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="text-2xl font-bold text-blue-900">
+        <h1 className="text-2xl font-bold text-zinc-800">
           LangGraph Level Check
         </h1>
       </header>
