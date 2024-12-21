@@ -158,7 +158,6 @@ export function ChatForm() {
           <p className="text-red-500 text-xs mt-1">{formErrors.githubLink}</p>
         )}
       </div>
-      =
       <div className="space-y-2">
         <Label htmlFor="quarter" className="text-sm font-medium text-gray-200">
           Current Quarter
