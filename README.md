@@ -1,4 +1,6 @@
 This is the [assistant-ui](https://github.com/Yonom/assistant-ui) starter project for langgraph.
+youtube.com link for more information
+[text](https://www.youtube.com/watch?v=VKu77JFzqTw)
 
 ## Getting Started
 

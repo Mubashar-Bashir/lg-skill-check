@@ -40,16 +40,7 @@ export function MyAssistant({ threadId }: MyAssistantProps) {
 
   return (
     <div className="flex flex-col h-full">
-      <header className="bg-white shadow-md p:1.5 md:p-4 flex items-center">
-        <Link href="/" className="mr-3 md:mr-4">
-          <Button variant="ghost" size="icon">
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-        </Link>
-        <h1 className="text-xl md:text-2xl font-bold text-zinc-800">
-          LangGraph Level Check
-        </h1>
-      </header>
+      
       <main className="flex-grow overflow-hidden flex flex-col">
         <div className="flex-grow overflow-y-auto p:1.5 md:p-4">
           <Thread
